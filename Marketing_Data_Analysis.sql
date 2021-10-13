@@ -1,6 +1,7 @@
 SELECT *
 FROM marketing_data;
 
+
 -- Identify the null values from the data set using income as the criteria
 SELECT COUNT(*)
 FROM marketing_data
@@ -11,6 +12,7 @@ WHERE income ISNULL;
 SELECT 
 	SUM(web_purchases)
 FROM marketing_data;
+
 
 -- Total number of wine purchases made through the web
 SELECT
@@ -45,12 +47,14 @@ WHERE web_purchases IN ("amount_wines",
 						amount_fish_prod,
 						amount_sweets,
 						amount_gold_prods);
-						
+	
+	
 -- Count of discount recieved from web purchases
 SELECT
 	SUM(discount_purchases)
 FROM marketing_data
 WHERE web_purchases IN(discount_purchases);
+
 
 -- Number of web purchases associated with each campaign
 SELECT 
@@ -65,6 +69,7 @@ WHERE web_purchases IN (accepted_cmp3,
 						accepted_cmp5,
 						accepted_cmp1,
 						accepted_cmp2);
+
 
 -- Total sales made from each campaign
 -- Campaign_1
@@ -82,7 +87,8 @@ WHERE accepted_cmp1 IN ("amount_wines",
 						amount_fish_prod,
 						amount_sweets,
 						amount_gold_prods);
-						
+
+
 -- Campaign_2						
 SELECT 
 	SUM(amount_wines) Wine, 
@@ -99,6 +105,7 @@ WHERE accepted_cmp2 IN ("amount_wines",
 						amount_sweets,
 						amount_gold_prods);	
 	
+	
 -- Campaign_3
 SELECT 
 	SUM(amount_wines) Wine, 
@@ -114,7 +121,8 @@ WHERE accepted_cmp3 IN ("amount_wines",
 						amount_fish_prod,
 						amount_sweets,
 						amount_gold_prods);
-						
+	
+	
 -- Campaign_4						
 SELECT 
 	SUM(amount_wines) Wine, 
@@ -130,7 +138,8 @@ WHERE accepted_cmp4 IN ("amount_wines",
 						amount_fish_prod,
 						amount_sweets,
 						amount_gold_prods);	
-						
+
+
 -- Campaign_5						
 SELECT 
 	SUM(amount_wines) Wine, 
@@ -161,6 +170,7 @@ FROM marketing_data
 GROUP BY year_birth
 ORDER BY year_birth DESC;
 
+
 -- total product pruchases for each year
 SELECT
 	date_customer,
@@ -173,6 +183,7 @@ SELECT
 FROM marketing_data
 WHERE date_customer IN (2012, 2013,2014)
 GROUP BY date_customer;
+
 
 -- Count of marital status and kid_home
 SELECT
@@ -193,6 +204,7 @@ FROM marketing_data
 GROUP BY marital_status, teen_home
 ORDER BY marital_status;
 
+
 -- Sum of income by education
 SELECT
 	education,
@@ -200,6 +212,7 @@ SELECT
 FROM marketing_data
 GROUP BY education
 ORDER BY "Income" DESC;
+
 
 -- Sum of income by marital status
 SELECT
@@ -209,12 +222,14 @@ FROM marketing_data
 GROUP BY marital_status
 ORDER BY "Income" ASC;
 
+
 -- Sum of income from kid home and teen home
 SELECT 
 	SUM(income),
 	kid_home, teen_home
 FROM marketing_data
 GROUP BY kid_home,teen_home;
+
 
 -- Discount by education
 SELECT
@@ -223,12 +238,14 @@ SELECT
 FROM marketing_data
 GROUP BY education;
 
+
 -- Sum of discount by marital status
 SELECT
 	marital_status,
 	SUM(discount_purchases)
 FROM marketing_data
 GROUP BY marital_status;
+
 
 -- web visits by marital _status
 SELECT
@@ -247,6 +264,7 @@ FROM marketing_data
 GROUP BY education
 ORDER BY Visits DESC;
 
+
 -- web visits by year
 SELECT
 	date_customer,
@@ -256,6 +274,7 @@ GROUP BY date_customer
 ORDER BY Visits DESC;
 
 
+-- Total amount spent on products 
 SELECT 
 	SUM(amount_wines) Wine, 
 	SUM(amount_fruits) Fruits,
@@ -269,6 +288,7 @@ SELECT
 FROM marketing_data;
 
 
+-- Income by country
 SELECT
 	country,
 	SUM(income) "Income"
@@ -290,6 +310,7 @@ FROM marketing_data
 GROUP BY country;
 
 
+-- Number of complains received
 SELECT 
 	SUM(complain)
-FROM market_data
+FROM market_data;
